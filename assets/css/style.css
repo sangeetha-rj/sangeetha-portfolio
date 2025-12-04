@@ -1,0 +1,88 @@
+
+
+/* Projects — modern colourful cards */
+.projects-list {
+  display: grid;
+  grid-template-columns: 1fr;           /* mobile-first */
+  gap: 22px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 12px;
+}
+
+@media(min-width:1000px){
+  .projects-list { grid-template-columns: 1fr 1fr; } /* two columns on large screens */
+}
+
+/* card base */
+.project-card {
+  position: relative;
+  background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(250,252,255,0.98));
+  border-radius: 14px;
+  padding: 18px 20px;
+  box-shadow: 0 10px 30px rgba(12,35,60,0.07);
+  transition: transform .28s cubic-bezier(.2,.9,.3,1), box-shadow .28s;
+  overflow: hidden;
+  border: 1px solid rgba(15,40,70,0.04);
+}
+
+/* colourful top stripe / accent */
+.project-card::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -30%;
+  width: 160%;
+  height: 6px;
+  background: linear-gradient(90deg, #6dd3ff, #8e7bff, #ff8fb1);
+  transform: translateY(-6px);
+  filter: drop-shadow(0 4px 12px rgba(142,123,255,0.12));
+}
+
+/* hover lift */
+.project-card:hover{
+  transform: translateY(-8px);
+  box-shadow: 0 18px 38px rgba(12,35,60,0.12);
+}
+
+/* title */
+.project-card h3{
+  margin: 0 0 10px;
+  font-size: 20px;
+  color: #07213a;
+  letter-spacing: .2px;
+}
+
+/* tech line */
+.project-card p strong{ color:#f54d77; }
+.project-card p { margin: 0 0 12px; color: #f54d77; font-weight:500; }
+
+/* list style */
+.project-card ul { margin: 0; padding-left: 18px; color: hsl(223, 100%, 1%); line-height:1.55; }
+
+/* small badges for quick-scan */
+.tech-badges { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:10px; }
+.tech-badges .badge {
+  background: rgba(11,59,102,0.06);
+  color: #0b3b66;
+  font-size:12px;
+  padding:6px 8px;
+  border-radius:999px;
+  border: 1px solid rgba(11,59,102,0.06);
+  display:inline-flex; align-items:center; gap:6px;
+}
+
+/* soft icon inside badge (optional) */
+.badge i{ font-style:normal; opacity:.9; }
+
+/* lighter muted note */
+.project-card em { display:block; margin-top:10px; color:#637986; font-size:13px; }
+
+/* make sure content not overlapped by sidebar */
+main, .projects-section, .projects-list { position: relative; z-index: 1; }
+
+/* small responsive tweak */
+@media(max-width:600px){
+  .project-card { padding:14px; border-radius:12px; }
+  .project-card h3{ font-size:18px; }
+}
